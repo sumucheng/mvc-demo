@@ -11,7 +11,5 @@
 }
 
 #app3 .square.active {
-  position: absolute;
-  right: 0;
-  /* transform: translateX(35vw); */
+  transform: translateX(35vw);
 }
