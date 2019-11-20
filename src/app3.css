@@ -1,0 +1,17 @@
+#app3 {
+  border: 1px solid burlywood;
+  position: relative;
+}
+
+#app3 .square {
+  border: 1px solid grey;
+  width: 10vw;
+  height: 10vh;
+  transition: transform 1s;
+}
+
+#app3 .square.active {
+  position: absolute;
+  right: 0;
+  /* transform: translateX(35vw); */
+}
