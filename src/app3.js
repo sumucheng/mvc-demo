@@ -1,25 +1,24 @@
-import $ from "jquery";
 import "./app3.css";
+import Vue from "vue";
 
-const html = `
-<section id="app3">
-        <div class="square"></div>
+const init = el => {
+  new Vue({
+    el: el,
+    data: {
+      active:
+        localStorage.getItem("app3.active") === "yes" ? "yes" : "no" || "yes"
+    },
+    watch: {
+      active() {
+        localStorage.setItem("app3.active", this.active);
+      }
+    },
+    template: `
+      <section id="app3">
+        <div class="square" :class="active==='yes'?'active':''"
+             @click="active==='yes'?active='no':active='yes'"></div>
       </section>
-`;
-
-const $element = $(html).appendTo($("body>.page"));
-
-const $square = $("#app3 .square");
-const active = localStorage.getItem("app3.active") === "yes";
-
-$square.toggleClass("active", active);
-
-$square.on("click", () => {
-  if ($square.hasClass("active")) {
-    $square.removeClass("active");
-    localStorage.setItem("app3.active", "no");
-  } else {
-    $square.addClass("active");
-    localStorage.setItem("app3.active", "yes");
-  }
-});
+    `
+  });
+};
+export default init;

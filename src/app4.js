@@ -1,19 +1,19 @@
-import $ from "jquery";
 import "./app4.css";
+import Vue from "vue";
 
-const html = `
-<section id="app4">
-        <div class="circle"></div>
+const init = el => {
+  new Vue({
+    el: el,
+    data: {
+      active: "no"
+    },
+    template: `
+      <section id="app4">
+        <div class="circle" :class="active==='yes'?'active':''"
+             @mouseenter="active='yes'" @mouseleave="active='no'"></div>
       </section>
-`;
-
-const $element = $(html).appendTo($("body>.page"));
-
-const $circle = $("#app4 .circle");
-$circle
-  .on("mouseenter", () => {
-    $circle.addClass("active");
-  })
-  .on("mouseleave", () => {
-    $circle.removeClass("active");
+    `
   });
+};
+
+export default init;
